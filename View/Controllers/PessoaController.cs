@@ -1,4 +1,5 @@
-﻿using Repository.Repositories;
+﻿using Model;
+using Repository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,13 @@ namespace View.Controllers
         }
 
         // GET: Pessoa
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
         public JsonResult ObterTodos()
         {
             var pessoas = repository.ObterTodos();
@@ -28,5 +31,38 @@ namespace View.Controllers
             return Json(resultado,
                 JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult Inserir(Pessoa pessoa)
+        {
+            pessoa.RegistroAtivo = true;
+            var id = repository.Inserir(pessoa);
+            var resultado = new { id = id };
+            return Json(resultado);
+        }
+
+        [HttpGet]
+        public JsonResult Apagar (int id)
+        {
+            var apagou = repository.Apagar(id);
+            var resultado = new { status = apagou };
+            return Json(resultado, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult Update(Pessoa pessoa)
+        {
+            var alterou = repository.Alterar(pessoa);
+            var resultado = new { status = alterou };
+            return Json(resultado);
+        }
+
+        [HttpGet, Route("pessoa/obterpeloid")]
+        public JsonResult ObterPeloId(int id)
+        {
+            return Json(repository.ObterPeloId(id), JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }

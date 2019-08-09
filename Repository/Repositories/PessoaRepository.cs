@@ -59,8 +59,7 @@ namespace Repository.Repositories
         public List<Pessoa> ObterTodos()
         {
             return context.Pessoas
-                .Where(x => x.RegistroAtivo == true)              
-                .OrderBy(x => x.Nome)
+                .Where(x => x.RegistroAtivo == true)
                 .ToList();
         }
     }
