@@ -22,6 +22,33 @@
         $nome = $("#pessoa-campo-nome").val();
         $cpf = $("#pessoa-campo-cpf").val();
 
+        if ($idAlterar == -1)
+            inserir($nome, $cpf);
+        else
+            alterar($nome, $cpf);
+    });
+
+    function alterar($nome, $cpf) {
+        $.ajax({
+            url: "http://localhost:50505/Pessoa/update",
+            method: "post",
+            data: {
+                id: $idAlterar,
+                nome: $nome,
+                cpf: $cpf
+            },
+            success: function (data) {
+                $("#modal-categoria").modal("hide")
+                $idAlterar = -1;
+                $tabelaPessoa.ajax.reload();
+            },
+            error: function (data) {
+                alert("Não foi possível alterar")
+            }
+        })
+    }
+
+    function inserir($nome, $cpf) {
         $.ajax({
             url: "http://localhost:50505/Pessoa/inserir",
             method: "post",
@@ -35,7 +62,7 @@
             },
             arror: function (err) { alert('hmm kk bjs') }
         })
-    });
+    }
 
     $(".table").on("click", ".botao-apagar", function () {
         $idApagar = $(this).data("id");
