@@ -53,6 +53,7 @@ namespace Repository.Repositories
         public Venda ObterPeloId(int id)
         {
             return context.Vendas
+                .Include("Cliente")
                 .FirstOrDefault(x => x.Id == id);
         }
 
