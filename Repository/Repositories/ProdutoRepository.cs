@@ -43,6 +43,7 @@ namespace Repository.Repositories
 
         public int Inserir(Produto produto)
         {
+            produto.RegistroAtivo = true;
             context.Produtos.Add(produto);
             context.SaveChanges();
             return produto.Id;
@@ -50,12 +51,12 @@ namespace Repository.Repositories
 
         public Produto ObterPeloId(int id)
         {
-            throw new NotImplementedException();
+            return context.Produtos.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Produto> ObterTodosPeloIdVenda(int idVenda)
         {
-            return context.Produtos.Where(x => x.IdVenda == idVenda).ToList();
+            return context.Produtos.Where(x => x.IdVenda == idVenda && x.RegistroAtivo).ToList();
         }
 
      

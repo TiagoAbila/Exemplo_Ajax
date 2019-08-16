@@ -43,7 +43,7 @@ namespace View.Controllers
             return Json(resultado, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet, Route("alterar")]
+        [HttpPost, Route("alterar")]
         public JsonResult Alterar(Produto produto)
         {
             var alterou = repository.Alterar(produto);
