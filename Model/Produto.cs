@@ -24,7 +24,7 @@ namespace Model
         public string Nome { get; set; }
 
         [Column("quantidade")]
-        public string Quantidade { get; set; }
+        public int Quantidade { get; set; }
 
         [Column("valor")]
         public decimal Valor { get; set; }
