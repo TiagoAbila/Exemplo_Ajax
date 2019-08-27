@@ -10,3 +10,5 @@ T:\Documentos\GitHub\ExemploAjax\Model\obj\Debug\Model.csproj.CoreCompileInputs.
 T:\Documentos\GitHub\ExemploAjax\Model\obj\Debug\Model.csproj.CopyComplete
 T:\Documentos\GitHub\ExemploAjax\Model\obj\Debug\Model.dll
 T:\Documentos\GitHub\ExemploAjax\Model\obj\Debug\Model.pdb
+T:\Documentos\GitHub\Exemplo_Ajax\Model\obj\Debug\Model.dll
+T:\Documentos\GitHub\Exemplo_Ajax\Model\obj\Debug\Model.pdb
